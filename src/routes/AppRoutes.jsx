@@ -6,6 +6,7 @@ import LandingPage from "../pages/LandingPage/LandingPage";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import FileUpload from "../pages/Dashboard/FileUpload";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -18,7 +19,10 @@ const router = createBrowserRouter([
   },
   {
     element: <ProtectedLayout />,
-    children: [{ path: "/dashboard", element: <Dashboard /> }],
+    children: [
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/upload", element: <FileUpload /> },
+    ],
   },
 ]);
 
