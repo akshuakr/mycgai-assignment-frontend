@@ -10,10 +10,41 @@ const Dashboard = () => {
         <div className={styles.subContainer}>
           <div className={styles.left}>
             <UploadComponent />
-            <GenerateButton />
+            {/* <GenerateButton /> */}
             <PreviousNoticesComponent />
           </div>
-          <div className={styles.right}>Hi</div>
+          <div className={styles.right}>
+            <div className={styles.rightTop}>
+              <div className={styles.rightTopLeft}>AI-Generated Reply</div>
+              <div className={styles.rightTopRight}>
+                <div className={styles.rightTopRightButtons}>
+                  {" "}
+                  <CopyIcon />
+                  Copy Text
+                </div>
+                <div className={styles.rightTopRightButtons}>
+                  {" "}
+                  <DownloadIcon />
+                  Download Reply
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rightBottom}>
+              <div className={styles.rightBottomLeft}>
+                <div className={styles.rightBottomLeftReplyTextTitle}>Reply Text</div>
+                <div className={styles.rightBottomLeftGeneratedTextContainer}>
+                  <div className={styles.rightBottomLeftGeneratedText}>{sampleText}</div>
+                </div>
+              </div>
+              <div className={styles.rightBottomRight}>
+                <div className={styles.rightTopRightText}>PDF Preview</div>
+                <div className={styles.displayPdf}>
+                  <iframe src={pdfUrl} className={styles.iframeClass} title="PDF Preview" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -236,5 +267,71 @@ const UploadDocumentIconPurple = () => {
     </svg>
   );
 };
+
+const CopyIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="#374151"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+      />
+    </svg>
+  );
+};
+
+const DownloadIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="#374151"
+      viewBox="0 0 16 16"
+    >
+      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+    </svg>
+  );
+};
+
+const sampleText = `Date: May 16, 2023
+
+Internal Revenue Service
+Austin, TX 73301
+
+Re: Response to Notice CP2000 for Tax Year 2022
+Taxpayer: John Doe
+SSN: XXX-XX-1234
+
+Dear Sir or Madam,
+
+I am writing in response to your Notice CP2000 dated April 30, 2023, in which you propose changes to my 2022 federal income tax return.
+
+After careful review of the notice and my tax records, I respectfully disagree with the proposed adjustments for the following reasons:
+
+1. The income reported from Goldman Sachs (EIN: XX-XXXXXXX) in the amount of $5,250 was already included in my Schedule C, line 1, as part of my self-employment income.
+
+2. The reported dividend from Vanguard Investments (EIN: XX-XXXXXXX) of $750 was for a qualified dividend reinvestment in a tax-advantaged retirement account (IRA), and thus is not subject to taxation for the tax year 2022.
+
+I have enclosed the following documentation to support my position:
+- Copy of Schedule C from my 2022 tax return showing the inclusion of the Goldman Sachs payment
+- Statement from my Vanguard IRA showing the dividend reinvestment transaction
+- Form 1099-DIV from Vanguard indicating the qualified dividend payment to my IRA
+
+Based on the enclosed information, I believe no additional tax is due. I request that you please adjust your records to reflect this information and confirm that this matter has been closed.
+
+If you need any additional information, please don't hesitate to contact me at (555) 123-4567 or via email at john.doe@email.com.
+
+Sincerely,
+
+John Doe`;
+
+const pdfUrl = `https://lexarocks.s3.ap-south-1.amazonaws.com/68260b06fcb7e561920b4978/136754c7-d154-4d3f-b66d-6df398880650-1747372293535.pdf`;
 
 export default Dashboard;
